@@ -127,13 +127,49 @@
             print_r($count);
             echo "<p> Number of bread items in Basket: <p>" . $count["apple"];
 
+            // checking for an item in the basket
             if (in_array("bread", $shoppingBasket)) {
                 echo "<p>There is bread in the basket</p>";
             } else {
                 echo "<p>There is no bread in the basket</p>";
             }
-            
 
+                        
+
+        ?>
+
+        <h5>Adding to Array</h5>
+        <form method="GET">
+            <label for="item">Add item to Basket</label>
+            <input type="text" name="item" id="item">
+            <input type="submit" name="submit" value="Submit">
+        </form>
+
+        <?php 
+            if ($_GET["submit"]) {
+                if ($_GET["item"]) {
+                    array_push($shoppingBasket, $_GET["item"]);
+                }
+            }
+            print_r($shoppingBasket);
+
+            array_splice($shoppingBasket, 0, 2, array("mango", "kiwi"));
+
+            echo "<p>New Shopping Basket: </p>";
+
+            print_r($shoppingBasket);
+            
+            sort($shoppingBasket);
+
+            echo "<p>New Shopping Basket Acending: </p>";
+
+            print_r($shoppingBasket);
+
+            rsort($shoppingBasket);
+
+            echo "<p>New Shopping Basket descending: </p>";
+
+            print_r($shoppingBasket);
         ?>
    </div>
 
